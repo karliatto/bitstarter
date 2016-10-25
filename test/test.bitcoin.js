@@ -4,6 +4,7 @@
 var bitcoin = require('../services/bitcoin.js');
 var expect = require('chai').expect;
 
+
 var address1 = '1BHPGY7Rb9WaBBkYPKjZTnKYRzt5mC8NPM';
 var address2 = '1Nkk6rPhFk5UbbNWT12QyCTosgjV8MWjeg';
 var address3 = '16TAy1uNFNEw58uPN4c7C8VnJUYp2ZJUjd';
