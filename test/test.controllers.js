@@ -6,9 +6,9 @@ chai.use(chaiHttp);
 
 describe('testing projects.js', function () {
 
-	it('testing get /addproject', function(done){
+	it('testing get /projects/add', function(done){
 		chai.request('http://localhost:3000/')
-		.get('addproject')
+		.get('projects/add')
 		.end(function(err, res){
 			expect(res).to.have.status(200);
 			done();
@@ -16,9 +16,9 @@ describe('testing projects.js', function () {
 
 	})
 
-	it('testing post /addproject', function(done){
+	it('testing post /projects', function(done){
 		chai.request('http://localhost:3000/')
-		.post('addproject')
+		.post('projects')
 		.set('content-type', 'application/x-www-form-urlencoded')
 		.send({
 			name : 'test',
