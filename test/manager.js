@@ -11,6 +11,7 @@ var bcrypt = require('bcrypt-nodejs');
 var app = require('../index');
 var db = app.db;
 
+
 var manager = module.exports = {
 
 	// Wait for the app to be ready.
@@ -40,7 +41,10 @@ var manager = module.exports = {
 
 	tearDown: function(cb) {
 
-		manager.dropDatabaseTables(cb);
+		async.series([
+			manager.dropDatabaseTables,
+			manager.clearSessions
+		], cb)
 	},
 
 	dropDatabaseTables: function(cb) {
@@ -72,5 +76,10 @@ var manager = module.exports = {
 					.catch(cb);
 			});
 		});
+	},
+
+	clearSessions: function(cb) {
+		app.sessionStore.clear();
+		cb();
 	}
 };
